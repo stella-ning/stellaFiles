@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CSS3炫酷鼠标滑过卡片3D翻转特效|DEMO_jQuery之家-自由分享jQuery、html5、css3的插件库</title>
+	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/default.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<script src="js/prefixfree.min.js"></script>
+	<style type="text/css">
+	 @import url(http://fonts.useso.com/css?family=Roboto:400,300);
+
+	* {
+	    font-family: 'Roboto', sans-serif;
+	}
+
+	body {
+	    background: #3498db;
+	}
+
+	#tri-d-wrapper {
+	    -webkit-perspective: 300px;
+	    perspective: 300px;
+	    position: absolute;
+	    height: 100%;
+	    width: 100%;
+	}
+
+	#img-wrapper {
+	    width: 350px;
+	    background: #3498db;
+	    margin: 0;
+	    position: absolute;
+	    cursor: pointer;
+	    border-radius: 3px;
+	    overflow: hidden;
+	    top: 40%;
+	    left: 50%;
+	    margin-left: -175px;
+	    margin-top: -131px;
+	    -webkit-transform: rotateX(30deg) scale(.65);
+	    transform: rotateX(30deg) scale(.65);
+	    -webkit-transition: .3s all ease;
+	    transition: .3s all ease;
+	    box-shadow: 0 15px 20px 5px rgba(0,0,0,.2);
+	}
+
+	#img-wrapper:hover {
+	    -webkit-transform: rotateX(0deg) scale(1);
+	    transform: rotateX(0deg) scale(1);
+	    box-shadow: none;
+	}
+
+	#img-wrapper img {
+	    width: 100%;
+	    margin: 0;
+	    position: relative;
+	    display: block;
+	    -webkit-transition: .3s all ease;
+	    transition: .3s all ease;
+	}
+
+	#img-wrapper:hover img {
+	    -webkit-transform: scale(1.5);
+	    -ms-transform: scale(1.5);
+	    transform: scale(1.5);
+	}
+
+	#img-wrapper:hover figcaption {
+	    background: rgba(0,0,0,.75);
+	}
+
+	#img-wrapper:hover figcaption h2 {
+	    opacity: 1;
+	    padding-left: 20px;
+	    -webkit-transition: .3s all ease .3s;
+	    transition: .3s all ease .3s;
+	}
+
+	#img-wrapper:hover figcaption .bottom-detail {
+	    -webkit-transform: translateY(0);
+	    -ms-transform: translateY(0);
+	    transform: translateY(0);
+	}
+
+	#img-wrapper:hover figcaption .bottom-detail p {
+	    opacity: 1;
+	    top: 0;
+	    -webkit-transition: .3s all ease .5s;
+	    transition: .3s all ease .5s;
+	}
+
+	#img-wrapper:hover figcaption .bottom-detail .social-icons li a {
+	    -webkit-transform: scale(1);
+	    -ms-transform: scale(1);
+	    transform: scale(1);
+	    -webkit-transition: .3s all ease .5s;
+	    transition: .3s all ease .5s;
+	}
+
+	#img-wrapper:hover figcaption .bottom-detail .social-icons li a.fa-qq {
+	    color: #50ABF1;
+	    -webkit-transition: .3s all ease .7s;
+	    transition: .3s all ease .7s;
+	}
+
+	#img-wrapper:hover figcaption .bottom-detail .social-icons li a.fa-weibo {
+	    color: #3B599A;
+	}
+
+	#img-wrapper:hover figcaption .bottom-detail .social-icons li a.fa-weixin {
+	    color: #EC4989;
+	    -webkit-transition: .3s all ease .6s;
+	    transition: .3s all ease .6s;
+	}
+
+	#img-wrapper:hover figcaption .bottom-detail .social-icons li a.fa-renren {
+	    color: 1769ff;
+	    -webkit-transition: .3s all ease .8s;
+	    transition: .3s all ease .8s;
+	}
+
+	figcaption {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    right: 0;
+	    bottom: 0;
+	    -webkit-transition: .3s all ease;
+	    transition: .3s all ease;
+	}
+
+	figcaption h2 {
+	    margin: 0;
+	    color: white;
+	    font-size: 22px;
+	    line-height: 70px;
+	    opacity: 0;
+	    padding-left: 0;
+	    padding-right: 20px;
+	    font-weight: 300;
+	}
+
+	figcaption .bottom-detail {
+	    position: absolute;
+	    width: 100%;
+	    bottom: 0;
+	    top: 70px;
+	    background: white;
+	    -webkit-transform: translateY(100%);
+	    -ms-transform: translateY(100%);
+	    transform: translateY(100%);
+	    -webkit-transition: .3s all ease .1s;
+	    transition: .3s all ease .1s;
+	}
+
+	.bottom-detail p {
+	    font-size: 17px;
+	    opacity: 0;
+	    top: 20px;
+	    padding-left: 20px;
+	    padding-right: 20px;
+	    color: #999;
+	    font-weight: 300;
+	    line-height: 1.5;
+	}
+
+	.bottom-detail .social-icons {
+	    padding: 0 20px;
+	    box-sizing: border-box;
+	    margin: 0;
+	    position: absolute;
+	    bottom: 0;
+	    width: 100%;
+	    list-style: none;
+	    text-align: center;
+	}
+
+	.social-icons li {
+	    display: inline-block;
+	    margin: 0;
+	}
+
+	.social-icons li a {
+	    font-size: 22px;
+	    text-decoration: none;
+	    padding: 22px 15px;
+	    -webkit-transform: scale(0);
+	    -ms-transform: scale(0);
+	    transform: scale(0);
+	}
+
+	.fa-qq {
+	    color: #50ABF1;
+	}
+
+	.fa-weibo {
+	    color: #3B599A;
+	}
+
+	.fa-weixin {
+	    color: #EC4989;
+	}
+
+	.fa-renren {
+	    color: #1769ff;
+	}
+	</style>
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+	<div class="htmleaf-container">
+		<header class="htmleaf-header">
+			<h1>CSS3炫酷鼠标滑过卡片3D翻转特效 <span>A CSS3 3D Flip Effect</span></h1>
+			<div class="htmleaf-links">
+				<a class="htmleaf-icon icon-htmleaf-home-outline" href="http://www.htmleaf.com/" title="jQuery之家" target="_blank"><span> jQuery之家</span></a>
+				<a class="htmleaf-icon icon-htmleaf-arrow-forward-outline" href="http://www.htmleaf.com/css3/css3donghua/201506112012.html" title="返回下载页" target="_blank"><span> 返回下载页</span></a>
+			</div>
+		</header>
+		<div id="tri-d-wrapper">
+		    <figure id="img-wrapper">
+		        <img src="img/studiojq2015_explore62_1x.jpg" alt="Preview Image">
+		        <figcaption>
+		            <h2 class="title">Hover Design Interaction</h2>
+		            <div class="bottom-detail">
+		                <p>Some little detail here, things about the designs summary lorem anything related just to make this look long text.</p>
+		                <ul class="social-icons">
+		                    <li><a class="fa fa-qq" href="#"></a></li>
+		                    <li><a class="fa fa-weibo" href="#"></a></li>
+		                    <li><a class="fa fa-weixin" href="#"></a></li>
+		                    <li><a class="fa fa-renren" href="#"></a></li>
+		                </ul>
+		            </div>
+		        </figcaption>
+		    </figure>
+		</div>
+		<div class="related">
+		    <h3>如果你喜欢这个插件，那么你可能也喜欢:</h3>
+		    <a href="http://www.htmleaf.com/jQuery/Form/201504291752.html">
+			  <img src="related/1.jpg" width="300" alt="jQuery超酷扁平风格元素3D翻转动画特效"/>
+			  <h3>jQuery超酷扁平风格元素3D翻转动画特效</h3>
+			</a>
+			<a href="http://www.htmleaf.com/jQuery/Image-Effects/20141228986.html">
+			  <img src="related/2.jpg" width="300" alt="jQuery仿Google样式的提示卡片3d翻转特效"/>
+			  <h3>jQuery仿Google样式的提示卡片3d翻转特效</h3>
+			</a>
+		</div>
+	</div>
+
+</body>
+</html>

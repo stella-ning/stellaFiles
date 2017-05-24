@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>实现图片截剪+预览功能的jquery插件</title>
+<meta name="author" content="Jquery-School" />
+<meta name="Copyright" content="Jquery-School,www.jq-school.com" />
+<meta name="keywords" content="Jquery,Jquery资源,前端设计,div+css" />
+<meta name="description" content="JquerySchool是一个专门分享jquery资源、插件、特效的一个网站,完全开放源代码,把实际开发中应用最多、最实用的Jquery资源抽取出来再加以精心编排,让广大网友能以最短的时间、花最少的精力去真正掌握jQuery开发的知识。" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+<script src="js/jquery.Jcrop.js" type="text/javascript"></script>
+<link rel="stylesheet" href="css/jquery.Jcrop.css" type="text/css" />	
+<style type="text/css">
+<!--
+		a{text-decoration:none;outline:none; color:#666666;}
+a:hover{text-decoration:none}
+img{border:0}
+
+#show{background:url(images/photo.jpg)}
+-->
+</style>	
+<script type="text/javascript">
+	jQuery(function($){
+		$('#target').Jcrop({
+			onChange:   showCoords,
+			onSelect:   showCoords,
+			onRelease:  clearCoords//,
+			//minSize: [164, 164],
+			//setSelect: [0, 0, 164, 164] 
+		});	
+	});  	
+	function showCoords(c){
+		$('#txtX1').val(c.x);
+		$('#txtY1').val(c.y);
+		$('#txtX2').val(c.x2);
+		$('#txtY2').val(c.y2);
+		$('#txtW').val(c.w);
+		$('#txtH').val(c.h);   
+		
+		$('#show').css({"backgroundPosition":"-"+c.x+"px -"+c.y+"px","width":c.w,"height":c.h}); 
+	};
+	
+	function clearCoords(){
+		$('#coords input').val('');
+		$('#h').css({color:'red'});
+		window.setTimeout(function(){
+			$('#h').css({color:'inherit'});
+		},500);
+	};
+</script>
+</head>
+
+<body>
+
+<img src="images/photo.jpg" id="target" />
+<input type="hidden" id="txtX1" />
+<input type="hidden" id="txtY1" />
+<input type="hidden" id="txtX2" />
+<input type="hidden" id="txtY2" />
+<input type="hidden" id="txtW" />
+<input type="hidden" id="txtH" />
+
+<div id="show"></div>
+
+</body>
+</html>

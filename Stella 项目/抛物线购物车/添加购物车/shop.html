@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <!--网站编码格式，UTF-8 国际编码，GBK或 gb2312 中文编码-->
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="关键词一，关键词二">
+  <meta name="Description" content="网站描述内容">
+  <title>Document</title>
+  <!--css js 文件的引入-->
+ <style type="text/css">
+ *{margin:0px; padding:0px;}
+
+ .Top{width:100%; height:85px; }
+ .Top .Logo{width:1000px; height:85px; margin:0px auto;}
+ .banner{width:100%;height:160px;background:url("images/banner.jpg") center;}
+
+ .shop{width:1000px; margin:40px auto; height:400px;}
+ .shop ul li{width:220px; padding:4px; border:1px solid #ddd;							list-style-type:none;float:left; margin:0px 10px;}
+ .shop ul li:hover{border:1px solid red;}
+ .shop ul li p.price{color:red; font-size:20px; font-weight:bold;line-height:25px;}
+ .shop ul li p.title{font-size:14px; color:#666; font-family:"微软雅黑";								line-height:25px;}
+.shop ul li span{width:100%;height:40px; background:#bc0000; color:#fff; text-align:center; line-height:40px; display:block; cursor:pointer;}
+
+.car{width:260px; height:100%; position:fixed; right:0px; bottom:0px; overflow:hidden;}
+.car .tools{width:35px; height:100%; background:#000;border-top:1px solid #000; position:absolute; left:0px; }
+.car .tools a{display:block;width:15px; height:70px;color:#fff; font-size:14px;						text-decoration:none; font-family:"微软雅黑";padding:30px 10px 0px;
+				background:url("images/car.png") no-repeat; margin-top:300px;}
+.car .tools a:hover{background-color:red;}
+.car .carBox{width:225px; height:100%; background:#ddd;right:0px; top:0px;								position:absolute;}
+.car .carBox dl{height:60px;border-bottom:1px dotted #fff; padding:10px 10px;}
+.car .carBox dl dt{width:60px;float:left; }
+.car .carBox dl dd{font-size:12px;float:right; line-height:20px; width:140px;}
+.car .carBox dl dd a{color:#666; text-decoration:none;}
+.car .carBox dl dd.price{color:red; font-size:14px;}
+.car .carBox .account{width:100%;height:40px; background:red; color:#fff; text-align:center; line-height:40px; display:block; position:absolute; bottom:0px;}
+.fly{width:50px;height:50px;border-radius:25px;}
+ </style>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/carfly.js"></script>
+ </head>
+ <body>
+<!--Top begin-->
+ <div class="Top">
+	<div class="Logo">
+		<a href=""><img src="images/logo.gif" /></a>
+	</div>
+</div>
+<!--Top end-->
+
+<div class="banner"></div>
+
+<!--shop begin-->
+ <div class="shop">
+	<ul>
+		<li>
+			<a href=""><img src="images/1.jpg" /></a>
+			<p class="price">￥198.0</p>
+			<p class="title">2015夏季新品海澜之家男装正品</p>
+			<span class="addCar">加入购物车</span>
+		</li>
+		<li>
+			<a href=""><img src="images/2.jpg" /></a>
+			<p class="price">￥198.0</p>
+			<p class="title">2015夏季新品海澜之家男装正品</p>
+			<span class="addCar">加入购物车</span>
+		</li>
+		<li>
+			<a href=""><img src="images/3.jpg" /></a>
+			<p class="price">￥198.0</p>
+			<p class="title">2015夏季新品海澜之家男装正品</p>
+			<span class="addCar">加入购物车</span>
+		</li>
+		<li>
+			<a href=""><img src="images/4.jpg" /></a>
+			<p class="price">￥198.0</p>
+			<p class="title">2015夏季新品海澜之家男装正品</p>
+			<span class="addCar">加入购物车</span>
+		</li>
+	</ul>
+ </div>
+<!--shop end-->
+
+<div class="car">
+
+
+	<div class="carBox">
+		<!--
+		<dl>
+			<dt><a href=""><img src="images/3.jpg"  width="60"/></a></dt>
+			<dd><a href="">2015夏季新品海澜之家男装正品</a></dd>
+			<dd class="price">￥198.0</dd>
+		</dl>
+		<dl>
+			<dt><a href=""><img src="images/2.jpg"  width="60"/></a></dt>
+			<dd><a href="">2015夏季新品海澜之家男装正品</a></dd>
+			<dd class="price">￥198.0</dd>
+		</dl>
+
+		<dl>
+			<dt><a href=""><img src="images/3.jpg"  width="60"/></a></dt>
+			<dd><a href="">2015夏季新品海澜之家男装正品</a></dd>
+			<dd class="price">￥198.0</dd>
+		</dl>-->
+
+		<a href="" class="account">结算</a>
+	</div>
+
+	<div class="tools">
+		<a href="#" class='end'>购物车</a>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	var mark=0;
+	$(".tools a").click(function(){
+		if(mark==0){
+			$(".car").animate({width:"35px"},500);
+			mark=1;
+		}else{
+			$(".car").animate({width:"260px"},500);
+			mark=0;
+		}
+	});
+
+	//添加购物车
+	$(".addCar").click(function(ev){
+		var txt=$(this).parent().find("p.title").text();
+		var bSrc=$(this).parent().find("img").attr("src");
+		//alert(txt+"..."+bSrc);
+		$(".carBox").append("<dl><dt><a href='#'><img src='"+bSrc+"' width='60'/></a></dt><dd><a href=''>"+txt+"</a></dd><dd class='price'>￥198.0</dd></dl>");
+		addProduct(ev);
+	});
+
+
+	// 添加抛物线
+	function addProduct(event){
+		// 设置落脚点
+		var offset = $(".end").offset();
+		// 获取当前点击的js对象
+		var _this = $(event.target);
+		var src = _this.parent().find("img").attr("src");
+		var flyer = $("<img src='"+src+"' class='fly'/>");
+		flyer.fly({
+			start:{
+				left:event.clientX, // 获取点击购物车按钮的X,Y坐标
+				top:event.clientY
+			},
+			end:{
+				left: offset.left,
+				top: offset.top,
+				width:20,
+				height:20
+			},
+			onEnd:function(){
+				flyer.fadeOut("slow",function(){
+					$(this).remove();
+				});
+			}
+
+		});
+	}
+
+</script>
+ </body>
+</html>

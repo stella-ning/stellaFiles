@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>bootstrap练习</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/isotope-docs.css"/>
+	<!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 所以要引用线上的 -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+		.color-shape{display:inline-block;border:1px solid #ddd;margin-right:10px;margin-bottom:10px;}
+		.color-shape.red{background:red;}
+		.color-shape.green{background:green;}
+		.color-shape.blue{background:blue;}
+		.isotope .isotope-item{
+            transition-property:transform,opacity;
+        }
+        .isotope,.isotope .isotope-item{
+            transition-duration:0.8s;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="button-group">
+			<button class="button is-checked" data-filter="*">All</button>
+			<button class="button" data-filter=".red">red</button>
+			<button class="button" data-filter=".green">green</button>
+			<button class="button" data-filter=".blue">blue</button>
+		</div>
+		<div id="lightBox" class="isotope">
+			<div class="color-shape red">red</div>
+			<div class="color-shape green">green</div>
+			<div class="color-shape blue">blue</div>
+			<div class="color-shape green">green</div>
+			<div class="color-shape red">red</div>
+			<div class="color-shape green">green</div>
+			<div class="color-shape blue">blue</div>
+			<div class="color-shape green">green</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/jquery.isotope.js"></script>
+	<script type="text/javascript">
+		var $container = $("#lightBox");
+		$container.isotope({
+	        filter:"*",
+	        animationOptions:{
+	            duration:750,
+	            easing:"linear"
+	        },
+	        layoutMode:"cellsByRow",
+	        cellsByRow:{
+	            columnWidth:150,
+	            rowHeight:150
+	        }
+	    });
+		$(".button-group .button").click(function(){
+	        $(this).addClass("is-checked").siblings().removeClass("is-checked");
+	        var selector = $(this).attr("data-filter");
+	        $container.isotope({
+	            filter:selector,
+	            animationOptions:{
+	                duration:750,
+	                easing:"linear"
+	            }
+	        });
+	    });
+	</script>
+</body>
+</html>

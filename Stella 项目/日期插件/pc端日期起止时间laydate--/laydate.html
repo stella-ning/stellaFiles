@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+	 <head>
+		 <meta charset="UTF-8">
+		 <meta name="Author" content="stella_ning">
+		 <meta name="Keywords" content="">
+		 <meta name="Description" content="">
+		<!---css/js-->
+
+		<link rel="stylesheet" href="css/form_public.css" />
+		<link rel="stylesheet" href="css/public.css">
+		<script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+		<script language="javascript" type="text/javascript" src="js/laydate.js"></script>
+		<title>易联校园个人中心</title>
+	 </head>
+	 <body>
+
+		 <div class="form_control_wrap">
+ 			<div class="divbox clearfix">
+ 				<span class="fl b_title">起止时间：</span>
+ 				<div class="form_control" style = "border:none;">
+ 					<input class="laydate-icon required" id="start" type="text" style="width:120px; margin-left:5px;height:20px;outline:none;border:1px solid #ddd;" name="time1" data-valid="isNonEmpty" data-error="活动开始时间必选" readonly="true" >
+ 					~
+ 					<input class="laydate-icon required" id="end" type="text"  style="width:120px; margin-left:10px;height:20px;outline:none;border:1px solid #ddd;" name="time2" data-valid="isNonEmpty" data-error="活动结束时间必选" readonly="true">
+
+ 				</div>
+ 			</div>
+ 		</div>
+
+		<script>
+			//日期范围限制
+			var start = {
+				elem: '#start',
+				format: 'YYYY-MM-DD',
+				min: laydate.now(), //设定最小日期为当前日期
+				max: '2099-06-16', //最大日期
+				istime: true,
+				istoday: false,
+				choose: function(datas){
+					 end.min = datas; //开始日选好后，重置结束日的最小日期
+					 end.start = datas //将结束日的初始值设定为开始日
+				}
+			};
+			var end = {
+				elem: '#end',
+				format: 'YYYY-MM-DD',
+				min: laydate.now(),
+				max: '2099-06-16',
+				istime: true,
+				istoday: false,
+				choose: function(datas){
+					start.max = datas; //结束日选好后，充值开始日的最大日期
+				}
+			};
+			laydate(start);
+			laydate(end);
+			//自定义日期格式
+			laydate({
+				elem: '#test1',
+				format: 'YYYY年MM月DD日',
+				festival: true, //显示节日
+				choose: function(datas){ //选择日期完毕的回调
+					alert('得到：'+datas);
+				}
+			});
+			//日期范围限定在昨天到明天
+			laydate({
+				elem: '#hello3',
+				min: laydate.now(-1), //-1代表昨天，-2代表前天，以此类推
+				max: laydate.now(+1) //+1代表明天，+2代表后天，以此类推
+			});
+			</script>
+	 </body>
+</html>

@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,minimum-scale=1.0">
+		<title>Document</title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			#box{
+				position:relative;
+				width:100%;
+				overflow:hidden;
+			}
+			#box ul{
+				width:500%;
+				overflow:hidden;
+			}
+			#box ul li{
+				list-style:none;
+				width:20%;
+				float:left;
+			}
+			#box ul li img{
+				display:block;
+				width:100%;
+			}
+			#icon{
+				position:absolute;
+				bottom:8px;
+				left:0;
+				width:100%;
+				text-align:center;
+			}
+			#icon span{
+				display:inline-block;
+				width:6px;
+				height:6px;
+				border:1px solid #fff;
+				border-radius:50%;
+			}
+			#icon span.active{
+				background:#fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul>
+				<li><img src="images/1.jpg"></li>
+				<li><img src="images/2.jpg"></li>
+				<li><img src="images/3.jpg"></li>
+				<li><img src="images/4.jpg"></li>
+				<li><img src="images/5.jpg"></li>
+			</ul>
+			<div id="icon">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		
+	</body>
+	<script>
+		var box = document.getElementById("box");
+		var oUl = box.getElementsByTagName("ul")[0];
+		var icon = document.getElementById("icon");
+		var icons = icon.getElementsByTagName("span");
+		var x = 0;
+		var start = 0;//初始位置
+		var scroll = 0;//移动过的距离
+		var w = window.innerWidth;
+
+		oUl.addEventListener("touchstart",function(e){
+			x = e.changedTouches[0].pageX;
+			start = scroll;
+			//console.log(scroll);
+		},false);
+
+		oUl.addEventListener("touchmove",function(e){
+			e.preventDefault();//阻止默认事件
+			var xL = e.changedTouches[0].pageX - x;
+			scroll = start + xL;
+			this.style.transform = "translate3d("+scroll+"px,0px,0px)";
+			//console.log(scroll);
+		},false);
+
+		oUl.addEventListener("touchend",function(e){
+			var xL = e.changedTouches[0].pageX - x;
+			scroll = start + xL;
+			var n = -scroll/w;//计算移动的宽度比例
+			n = n%1<0.5?Math.floor(n):Math.ceil(n);
+			//console.log(n);
+			if(n<0)
+			{
+				n=0
+			}else if(n>4){
+				n = 4;
+			}
+			scroll = -n*w;
+			this.style.transform = "translate3d("+scroll+"px,0px,0px)";
+			//console.log(scroll);
+			for (var i=0;i<icons.length ;i++ )
+			{
+				if (i != n)
+				{
+					icons[i].className = '';
+				}else{
+					icons[i].className = 'active';
+				}
+			}
+		},false);
+	</script>
+</html>

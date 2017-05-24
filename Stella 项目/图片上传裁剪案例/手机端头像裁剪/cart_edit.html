@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>禅</title>
+    <script src="../js/index.js"></script>
+    <script src="../js/iscroll-lite.js"></script>
+    <link rel="stylesheet" href="../css/index.css"/>
+    <style>#wrapper{top:1.2rem!important; bottom: 1.066666666666667rem!important;}.wrap li{width:100%;line-height:2.93333333rem;padding:.4rem;box-sizing:border-box;border-top:.26666667rem solid #f3f3f3;position:relative;background:#fff}.wrap li .btn_select{width:.53333333rem;height:.53333333rem;background:url(../img/icon.png) no-repeat;background-size:8rem 5.33333333rem;background-position:-1.74666667rem -1.08rem;z-index:2}.wrap li .content_box{width:100%;height:100%;padding-left:1.04rem;box-sizing:border-box;position:relative}.wrap li .content_box .cart_edit_img{width:2.13333333rem;float:left;margin-right:.66666667rem}.wrap li .content_box .content{position:absolute;left:3.84rem;right:0;top:0;bottom:0}.wrap li .content_box .content .act{padding:.26666667rem 0}.wrap li .content_box .content .act .cm_minus{float:left}.wrap li .content_box .content .act .num{position:absolute;left:.77333333rem;right:.77333333rem;font-size:.4rem;line-height:.77333333rem;text-align:center}.wrap li .content_box .content .act .cm_add{float:right}.wrap li .content_box .content .classify_box{width:100%;height:.72rem;line-height:.72rem;position:absolute;left:0;bottom:0;color:#a3a3a3;font-size:.26666667rem}.wrap li .content_box .content .classify_box .classify{float:left;display:inline-block}.wrap li .content_box .content .classify_box .btn_drop{width:.53333333rem;height:.53333333rem;background:url(../img/icon.png) no-repeat;background-size:8rem 5.33333333rem;background-position:-.02666667rem -2.46666667rem;position:absolute;right:.12rem;top:0;bottom:0;margin:auto}.select_all.all .icon_all,.wrap>li.select .btn_select{background-position:-.8rem -1.08rem!important}.footer{width:100%;height:1.06666667rem;line-height:1.06666667rem;background:#fff;position:absolute;left:0;bottom:0;z-index: 2}.footer .select_all{padding-left:.66666667rem;float:left;font-size:.4rem;position:relative;left:.4rem}.footer .select_all .icon_all{width:.53333333rem;height:.53333333rem;background:url(../img/icon.png) no-repeat;background-size:8rem 5.33333333rem;background-position:-1.74666667rem -1.08rem;position:absolute;left:0;top:0;bottom:0;margin:auto}.footer .btn_act_box{display:inline-block;float:right;font-size:.37333333rem;color:#fff}.footer .btn_act_box .btn_delete,.footer .btn_act_box .btn_move{width:2.42666667rem;text-align:center;float:left}.footer .btn_act_box .btn_move{background:#000}.footer .btn_act_box .btn_delete{background:#ed1c24}.mask{width:100%;height:100%;background:#000;opacity:.5;position:absolute;left:0;top:0;z-index:10}.layer{width:100%;height:7.57333333rem;position:absolute;bottom:0;left:0;background:#fff;z-index:100;transition:1s;transform:translateY(0%)}.layer .info_box{width:100%;height:2.29333333rem;padding-bottom:.4rem;position:relative}.layer .info_box .cart_layer_img{width:2.81333333rem;border:.01333333rem solid #eee;position:absolute;left:.4rem;bottom:.4rem}.layer .info_box .title_box{position:absolute;left:3.76rem;right:1.57333333rem;top:.4rem}.layer .info_box .title_box h4{font-size:.32rem;line-height:.50666667rem}.layer .info_box .title_box .price{font-size:.50666667rem;color:#ed1c24;line-height:.86666667rem}.layer .tab_wrap{width:100%;padding:.37333333rem .4rem;box-sizing:border-box;border-top:.01333333rem solid #e5e5e5;border-bottom:.01333333rem solid #e5e5e5}.layer .tab_wrap .classify{line-height:.42666667rem;font-size:.34666667rem;margin-bottom:.18666667rem;display:block}.layer .tab_wrap .tab span{width:1.46666667rem;height:.61333333rem;line-height:.61333333rem;text-align:center;font-size:.32rem;border:.01333333rem solid #a3a3a3;float:left;margin-right:.4rem;border-radius:.08rem}.layer .tab_wrap .tab .on{border:1px solid #ed1c24;background:#ed1c24;color:#fff}.layer .num_box{width:100%;padding:.33333333rem .4rem;box-sizing:border-box;line-height:.77333333rem}.layer .num_box .info{float:left;font-size:.34666667rem}.layer .num_box .num_act{display:inline-block;float:right}.layer .num_box .num_act .num{display:block;width:.77333333rem;height:.77333333rem;font-size:.4rem;text-align:center;float:left;background:#fff;color:#000}.layer .btn_confirm{width:100%;line-height:1.33333333rem;color:#fff;background:#000;font-size:.48rem;text-align:center;position:absolute;bottom:0;left:0;z-index:200}</style>
+</head>
+<body onload="loaded()">
+    <header id="header">
+        <a class="btn_control" href="javascript:void(0);"></a>
+       评论
+        <i class="btn_edit">编辑</i>
+    </header>
+    <div id="wrapper">
+        <ul class="wrap">
+			<li>
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="select">
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="select">
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="select">
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<i class="btn_select v_align"></i>
+				<div class="content_box clear">
+					<img class="cart_edit_img" src="../img/cart_edit_img1.jpg">
+					<div class="content">
+						<div class="act clear">
+							<span class="cm_minus"></span>
+							<span class="cm_num num">1</span>
+							<span class="cm_add"></span>
+						</div>
+						<div class="classify_box">
+							<div class="classify">颜色分类:<span>定制版</span></div>
+							<i class="btn_drop"></i>
+						</div>
+					</div>
+				</div>
+			</li>
+        </ul>
+    </div>
+
+<div class="footer">
+	<div class="select_all"><i class="icon_all"></i>全选</div>
+	<div class="btn_act_box">
+		<span class="btn_move">移动收藏夹</span>
+		<span class="btn_delete">删除</span>
+	</div>
+</div>
+<div class="mask"></div>
+<div class="layer">
+    <div class="info_box">
+        <img class="cart_layer_img" src="../img/cart_layer_img1.jpg">
+        <div class="title_box">
+            <h4>初境古茶黄金超值大礼盒初境古茶黄金超值大礼盒</h4>
+            <div class="price">¥ <span>299.00</span></div>
+        </div>
+    </div>
+    <div class="tab_wrap">
+        <span class="classify">分类</span>
+        <div class="tab clear">
+            <span class="on">精装</span>
+            <span>定制</span>
+            <span>奢华版</span>
+        </div>
+    </div>
+    <div class="num_box">
+        <span class="info">数量</span>
+        <div class="num_act">
+            <span class="cm_minus minus fl"></span>
+            <span class="num">0</span>
+            <span class="cm_add add fl"></span>
+        </div>
+    </div>
+    <div class="btn_confirm">确定</div>
+</div>
+<script src="../js/zepto.min.js"></script>
+<script src="../js/touch.js"></script>
+<script>
+	$(function(){
+		var num=0;
+		var aLi=$('.wrap li');
+		var aBtnSelect=$('.btn_select');
+		var aCmAdd=$('.cm_add');
+		for(var j=0;j<aBtnSelect.length;j++){
+			aBtnSelect.eq(j).tap(function(){
+				var parent=$(this).closest('li');
+				if(parent.hasClass('select')){
+					parent.removeClass('select');
+				}else{
+					parent.addClass('select');
+				}
+
+				num=$('.wrap li.select').length;
+				if(num==aBtnSelect.length){
+					$('.select_all').addClass('all');
+				}else{
+					$('.select_all').removeClass('all');
+				}
+			});
+		}
+
+
+
+
+		$('.select_all').tap(function(){
+			if(!$(this).hasClass('all')){
+				$(this).addClass('all');
+				for(var i=0;i<aLi.length;i++){
+					aLi.eq(i).addClass('select');
+				}
+			}else{
+				$(this).removeClass('all');
+				for(var i=0;i<aLi.length;i++){
+					aLi.eq(i).removeClass('select');
+				}
+			}
+		});
+
+
+		for(var i=0;i<aCmAdd.length;i++){
+			$('.cm_add').eq(i).tap(function(){
+				var num=parseInt($(this).siblings('.num').html());
+				num++;
+				$(this).siblings('.num').html(num);
+			});
+			$('.cm_minus').eq(i).tap(function(){
+				var num=parseInt($(this).siblings('.num').html());
+				num--;
+				if(num<=0){
+					num=0;
+				}
+				$(this).siblings('.num').html(num);
+			});
+		}
+
+		$('.mask').tap(function(){
+			$(this).hide();
+			$(".layer").css({
+		        "transform": "translateY(120%)",
+		        "-webkit-transform": "translateY(120%)"
+		    });
+		});
+
+		var aTab=$('.tab span');
+		for(var i=0;i<aTab.length;i++){
+			aTab.eq(i).tap(function(){
+				$('.tab span').removeClass('on');
+				$(this).addClass('on');
+			});
+		}
+	});
+
+
+</script>
+</body>
+</html>

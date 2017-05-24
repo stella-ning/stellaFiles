@@ -1,0 +1,37 @@
+变量	
+	let, const, 
+类
+	class, extends, super, 
+函数
+	arrow functions, 
+模板string
+	template string,
+	let firstName = "wen";let lastName = "congsheng"; console.log(`my name is ${firstName} ${lastName};`);
+解构
+	destructuring,
+默认值
+	default, rest arguments
+
+
+object
+
+	var a = 1;
+	var b = {
+		a, //与外面 a : a
+		"c":2
+		age:()=>18
+		sex(){return 'man'}
+	}
+
+
+
+old 
+	function(){};
+	function(me){return me}
+	function(me, age){console.log(me,age)}
+new 
+	() => {};
+	me=>return me;
+	(me="xx",age=18) =>{console.log(me,age)}
+	
+

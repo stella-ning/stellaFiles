@@ -1,0 +1,81 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>宝贝评分</title>
+    <style>
+        #rating-star,#fw,#wl {
+            margin: 50px;
+        }
+
+            #rating-star a,#fw a,#wl a {
+                background: url(commentstar.png) no-repeat 0 -90px;
+                display: inline-block;
+                height: 23px;
+                text-indent: -999em;
+                width: 23px;
+            }
+    </style>
+</head>
+<body>
+    <div id="rating-star">
+        <a href="#">0</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <input type="hidden" id="goodLevel" />
+    </div>
+    <div id="fw">
+        <a href="#">0</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <input type="hidden" id="fwLevel" />
+    </div>
+    <div id="wl">
+        <a href="#">0</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <input type="hidden" id="wlLevel" />
+    </div>
+    <script src="jquery-2.1.1.min.js"></script>
+    <script>
+	evaluate($("#rating-star"),$("#goodLevel"),$("#rating-star a"));
+	evaluate($("#fw"),$("#fwLevel"),$("#fw a"));
+	evaluate($("#wl"),$("#wlLevel"),$("#wl a"));
+	function evaluate($item,$level,$stars){
+		$item.on('click','a',function(){
+		 	$level.val(this.innerHTML);
+		}).on('mouseenter','a',function(){
+		 	setStar(this);
+		}).on('mouseleave','a',function(){
+			 var levelVal = $level.val();
+			 if(levelVal == ''){
+			     $stars.css('background-position', '0 -90px');
+			 }else{
+			     setStar($stars[levelVal]);
+			 }
+		});
+		function setStar(star) {
+			 var $this = $(star);
+			 var level = $this.html();
+			 //alert(level);
+			 var n;
+			 if (level >= '3') {
+			 	n = '0 -30px';
+			 } else if (level >='1' && level <'3') {
+				 n = '0 0';
+			 } else {
+			 	n = '0 -60px';
+			 }
+			 $this.prevAll().andSelf().css('background-position', n);
+			 $this.nextAll().css('background-position', '0 -90px');
+		}
+
+	}
+    </script>
+</body>
+</html>

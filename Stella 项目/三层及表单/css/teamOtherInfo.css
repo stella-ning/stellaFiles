@@ -1,0 +1,37 @@
+@charset "utf-8";
+#right_info .info_title{padding-bottom:15px;margin-bottom:15px;}
+#other_info{margin-top:2px;padding-bottom:20px;position:relative;}
+
+/*---公共样式--*/
+#other_info .item_list{height:auto;}
+#other_info .first_tit,.two_tit{width:100%;margin-bottom:10px;}
+#other_info .x_first_tit,.x_two_tit{cursor: pointer;vertical-align: middle;display:inline-block;margin:0;padding:0;}
+#other_info .category_select{border:1px solid #ddd;background:#fff;outline: none;vertical-align: middle;color:#eee;}
+/*--一级样式--*/
+
+#other_info .item .item_list .first_tit{background:#f4f9fe;padding-left:20px;height:35px;line-height:35px;}
+#other_info .item .item_list .first_tit .x_first_tit{font-size:14px;color:#1e97de;font-weight: bold;}
+#other_info .item .item_list .first_tit .x_first_tit .category_select{width:20px;height:17px;}
+/*--二级样式--*/
+#other_info .item .item_list .item_two{padding-left:40px;padding-bottom:10px;display:none;}
+#other_info .item .item_list .item_two .item_list .two_tit{height:25px;line-height:25px;border-bottom:1px solid #eee;}
+#other_info .item .item_list .item_two .item_list .two_tit .x_two_tit{font-size:12px;color:#666;}
+#other_info .item .item_list .item_two .item_list .two_tit .category_select{width:18px;height:16px;}
+/*--第三层样式--*/
+.item_three{background:#F8F8F8;color:#666;font-size:12px;display:none;padding:6px 0px 35px;position:relative;}
+.item_three .add_btn{position:absolute;bottom:10px;right:30px;cursor: pointer;}
+.item_three .add_btn i{width:16px;height:16px;background:url("../images/btn_maximize.gif") no-repeat center;display:inline-block;margin-right:8px;vertical-align: middle;}
+.inline-form-wrap{padding:5px 0px;}
+.item_three .inline-form{margin-bottom:10px;position:relative;width:312px;}
+.item_three .inline-form .type{width:100px;text-align:right;margin-right:15px;}
+/*.item_three .inline-form .type_list{width:800px;}*/
+.item_three .inline-form .type_list label{padding-right:15px;}
+.item_three .inline-form .type_list label input[type="checkbox"]{margin-right:3px;}
+.item_three .inline-form .type_list input[type="text"]{width:100px;height:25px;padding-left:5px;outline:none;}
+
+.button{display:block;width:70px;height:35px;line-height:35px;text-align:center;border:none;outline: none;background:#1e97de;color:#fff;font-size:16px;margin-top:35px;margin:40px auto 20px;}
+
+/*--验证错误提示样式--*/
+.valid_message{color:#32BC61;font-size:12px;width:200px;position:absolute;bottom:80px;right:345px;}
+.error .valid_message{color:red;font-size:12px;width:200px;}
+.item_three .inline-form span.valid_message{position:absolute;left:230px;top:0;}

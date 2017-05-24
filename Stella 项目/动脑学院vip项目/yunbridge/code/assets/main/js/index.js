@@ -1,0 +1,11 @@
+$(function(){
+	//alert(222);
+    $("#mainForm")
+    	.bootstrapValidator()
+    	.on("success",function(){
+    		alert(1);
+    	});
+    $.getJSON("../../../data/data1.json",function(obj){
+    	alert(obj);
+    });
+});

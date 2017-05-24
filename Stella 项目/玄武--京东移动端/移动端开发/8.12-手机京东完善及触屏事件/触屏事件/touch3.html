@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>Document</title>
+		<style>
+			*{
+				margin:0px;
+				padding:0px;
+			}
+			#box{
+				width:100px;
+				height:100px;
+				background:red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+	</body>
+	<script>
+		var box = document.getElementById("box");
+		box.addEventListener("touchstart",function(e){
+			console.log(e.targetTouches );
+		},false);
+		box.addEventListener("touchmove",function(e){
+			console.log(e.targetTouches );
+		},false);
+		box.addEventListener("touchend",function(e){
+			console.log(e.targetTouches );
+		},false);
+	</script>
+</html>

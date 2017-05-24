@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="email=no" name="format-detection">
+    <title>禅</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" type="text/css" href="ad_manage.css">
+    <style>
+		#wrapper{top: 1.2rem!important;bottom: 0!important;}
+		.htmleaf-container{margin:0 auto;text-align:center;overflow:hidden;width:100%;height:100%;position:fixed;top:0;background:rgba(0, 0, 0, 0.64);display:none;z-index:999999;}
+		#clipArea{height:90%;}
+		.foot-use{background:#fff;height:10%;width:100%;position:relative;}
+		.uploader1{width:30%;height:100%;float:left;position:relative;}
+		.blue .button{color:#fff;background:#18b4ed;height:100%;}
+		.button{float:left;outline:0 none;margin:0;cursor:pointer;border:0;width:100%;font-size:0.5rem;}
+		.uploader1 input[type=file]{position:absolute;top:0;left:0;bottom:0;border:0;padding:0;margin:0;height:100%;width:100%;cursor:pointer;border:solid 1px #ddd;opacity:0;z-index:999;}
+		#clipBtn{float:right;height:100%;width:30%;background:#18b4ed;border:0;outline:none;color:#fff;font-size:0.5rem;z-index:999;}
+		.filename{position:absolute;outline:0 none;line-height:1.5rem;font-size:1.5rem;color:#999;width:100%;margin:0;overflow:hidden;cursor:default;text-overflow:ellipsis;white-space:nowrap;border:0;top:9.2rem;text-align:center;}
+	</style>
+</head>
+<body  onload="loaded()"; style="background: #f1f2f2;">
+<header class="header">
+    <a class="btn_control" href="javascript:void(0);"></a>
+    我的信息
+</header>
+
+<div id="wrapper" class="info">
+    <div class="content">
+        <div class="personal_info">
+            <div class="head_sculpture clear">
+                <span class="fl head_text">头像</span>
+				<a id="logox" href="javascript:void(0)" class="avator_text logo fr">点击上传</a>
+                <img class="fr head_img" src="tx.png" style="display: none">
+            </div>
+            <div class="nickname_box clear">
+                <span class="fl item">昵称</span>
+                <span class="fr item_detial">哎呦喂</span>
+            </div>
+            <div class="phone_box clear">
+                <span class="fl item">手机号码</span>
+                <span class="fr item_detial">13001238543(不支持修改)</span>
+            </div>
+            <div class="membership_level_box">
+                <div class="membership_level clear">
+                    <span class="fl item">会员等级</span>
+                    <span class="fr item_detial">普通会员</span>
+                </div>
+                <a class="btn_complete" href="javascript:void(0)">点击完善会员信息获取会员福利</a>
+            </div>
+            <div class="integral clear">
+                <span class="fl item">会员积分</span>
+                <span class="fr item_detial">500积分</span>
+                <a class="btn_recharge" href="javascript:void(0)">充值</a>
+            </div>
+        </div>
+
+
+
+       <div class="shipping_address">
+            <div class="title">收货地址</div>
+            <div class="uncomplete">
+        				<span class="uncomplete_label fl">你还未完善收货地址</span>
+        				<a class="btn_add fr" href="javascript:void(0)">去添加收货地址</a>
+            </div>
+            <div class="default_address" style="display: none">
+                <div class="name_phone clear">
+                    <span class="name">哎呦喂</span>
+                    <span class="phone">13001238543</span>
+                </div>
+                <div class="ad">广州市天河区珠江西路8号高德置地D座6楼606</div>
+            </div>
+            <div class="ad_option clear" style="display: none">
+                <span>默认地址</span>
+                <a class="btn_switch" href="javascript:void(0)">切换收货地址</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="layer_avator">上传成功</div>
+
+<article class="htmleaf-container">
+    <div id="clipArea"></div>
+    <div class="foot-use clear">
+        <div class="uploader1 blue">
+            <input type="button" name="file" class="button" value="打开">
+            <input id="file" type="file"  accept="image/*" multiple  />
+        </div>
+        <button id="clipBtn">截取</button>
+    </div>
+</article>
+
+
+<script src="jquery-2.1.1.min.js"></script>
+<script src="iscroll-zoom.js"></script>
+<script src="hammer.js"></script>
+<script src="jquery.photoClip.js"></script>
+<!--头像裁剪 onchange="setImagePreview()"-->
+<script>
+    var lWidth=0;
+    var lHeight=0;
+    $(window).resize(function(){
+        lWidth=$('#logox').width()*2;
+        lHeight=$('#logox').height()*2;
+    }).trigger('resize');
+    var obUrl = ''
+    //document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+    $("#clipArea").photoClip({
+        width: lWidth,
+        height: lHeight,
+        file: "#file",
+        view: "#view",
+        ok: "#clipBtn",
+        loadStart: function() {
+            return;
+            console.log("照片读取中");
+        },
+        loadComplete: function() {
+            return;
+            console.log("照片读取完成");
+        },
+        clipFinish: function(dataURL) {
+            //console.log(dataURL);
+            var imgURL=dataURL.replace(/^data:image\/(png|jpg|gif);base64,/,'');
+            //console.log(imgURL);
+            $.ajax({
+                type:'POST',
+                url:putUrl,
+                dataType:'json',
+                data:{base64:dataURL,mid:$mid},
+                success:function(msg){
+
+                }
+            });
+        }
+    });
+</script>
+<script>
+    $(function(){
+        $("#logox").click(function(){
+            $(".htmleaf-container").show();
+			//alert($('#file').val());
+        })
+        $("#clipBtn").click(function(){
+            $("#logox").empty();
+            $('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: '+lWidth/2+'px;height: '+lHeight/2+'px;border-radius: 50%;">');
+            $(".htmleaf-container").hide();
+
+        })
+
+    });
+</script>
+<!-- <script>
+    $("#file0").change(function(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        obUrl = objUrl;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#img0").attr("src", objUrl).show();
+        }
+        else{
+            $("#img0").hide();
+        }
+    }) ;
+    function qd(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        obUrl = objUrl;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#img0").attr("src", objUrl).show();
+        }
+        else{
+            $("#img0").hide();
+        }
+    }
+    function getObjectURL(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+		alert(url);
+        return url ;
+    }
+</script> -->
+<script type="text/javascript">
+/*
+	$('#file').on('change',function(){
+		var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
+                picture = file_head.value;
+        if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
+                !1;
+        if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display = "block",
+                preview.style.width = "63px",
+                preview.style.height = "63px",
+                preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+        else {
+            file_head.select(),
+                    file_head.blur(),
+                    img_txt = document.selection.createRange().text,
+                    localImag = document.getElementById("localImag"),
+                    localImag.style.width = "63px",
+                    localImag.style.height = "63px";
+            try {
+                localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
+                        localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
+            } catch(f) {
+                return alert("您上传的图片格式不正确，请重新选择！"),
+                        !1
+            }
+            preview.style.display = "none",
+                    document.selection.empty()
+        }
+        return document.getElementById("DivUp").style.display = "block",
+                !0
+	});
+
+    function setImagePreview() {
+        var preview, img_txt, localImag, file_head = document.getElementById("file_head"),
+                picture = file_head.value;
+        if (!picture.match(/.jpg|.gif|.png|.bmp/i)) return alert("您上传的图片格式不正确，请重新选择！"),
+                !1;
+        if (preview = document.getElementById("preview"), file_head.files && file_head.files[0]) preview.style.display = "block",
+                preview.style.width = "63px",
+                preview.style.height = "63px",
+                preview.src = window.navigator.userAgent.indexOf("Chrome") >= 1 || window.navigator.userAgent.indexOf("Safari") >= 1 ? window.webkitURL.createObjectURL(file_head.files[0]) : window.URL.createObjectURL(file_head.files[0]);
+        else {
+            file_head.select(),
+                    file_head.blur(),
+                    img_txt = document.selection.createRange().text,
+                    localImag = document.getElementById("localImag"),
+                    localImag.style.width = "63px",
+                    localImag.style.height = "63px";
+            try {
+                localImag.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale)",
+                        localImag.filters.item("DXImageTransform.Microsoft.AlphaImageLoader").src = img_txt
+            } catch(f) {
+                return alert("您上传的图片格式不正确，请重新选择！"),
+                        !1
+            }
+            preview.style.display = "none",
+                    document.selection.empty()
+        }
+        return document.getElementById("DivUp").style.display = "block",
+                !0
+
+    }*/
+</script>
+</body>
+</html>

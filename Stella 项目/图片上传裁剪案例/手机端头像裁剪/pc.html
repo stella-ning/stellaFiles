@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+	 <head>
+		 <meta charset="UTF-8">
+		 <meta name="Author" content="stella_ning">
+		 <meta name="Keywords" content="">
+		 <meta name="Description" content="">
+		 <meta name="viewport" content="width=device-width,user-scalable=yes,initial-scale = 1.0,minimum-scale = 1.0,maximum-scale=1.5,target-densitydpi =device-dpi">
+		<!---css/js-->
+		<style>
+			.htmleaf-container{margin:0 auto;text-align:center;overflow:hidden;width:100%;height:100%;position:fixed;top:0;background:rgba(0, 0, 0, 0.64);display:none;z-index:999999;}
+			#clipArea{height:90%;}
+			.foot-use{background:#fff;height:10%;width:100%;position:relative;}
+			.uploader1{width:30%;height:100%;float:left;position:relative;}
+			.blue .button{color:#fff;background:#18b4ed;height:100%;}
+			.button{float:left;outline:0 none;margin:0;cursor:pointer;border:0;width:100%;font-size:0.5rem;}
+			.uploader1 input[type=file]{position:absolute;top:0;left:0;bottom:0;border:0;padding:0;margin:0;height:100%;width:100%;cursor:pointer;border:solid 1px #ddd;opacity:0;z-index:999;}
+			#clipBtn{float:right;height:100%;width:30%;background:#18b4ed;border:0;outline:none;color:#fff;font-size:0.5rem;z-index:999;}
+			.filename{position:absolute;outline:0 none;line-height:1.5rem;font-size:1.5rem;color:#999;width:100%;margin:0;overflow:hidden;cursor:default;text-overflow:ellipsis;white-space:nowrap;border:0;top:9.2rem;text-align:center;}
+		</style>
+		<title>pc端图片上传裁剪</title>
+	 </head>
+	 <body>
+		
+		<div id="wrapper">
+			<div class="head_sculpture clear">
+                <span class="fl head_text">头像</span>
+				<a id="logox" href="javascript:void(0)" class="avator_text logo fr">点击上传</a>
+                <img class="fr head_img" src="tx.png" style="display: none">
+            </div>
+		</div>
+
+		<article class="htmleaf-container">
+			<div id="clipArea"></div>
+			<div class="foot-use clear">
+				<div class="uploader1 blue">
+					<input type="button" name="file" class="button" value="打开">
+					<input id="file" type="file"  accept="image/*" multiple  />
+				</div>
+				<button id="clipBtn">截取</button>
+			</div>
+		</article>
+
+		<script src="jquery-2.1.1.min.js"></script>
+		<script src="iscroll-zoom.js"></script>
+		<script src="hammer.js"></script>
+		<script src="jquery.photoClip.js"></script>
+		<script>
+			var lWidth=0;
+			var lHeight=0;
+			$(window).resize(function(){
+				lWidth=150;
+				lHeight=150;
+			}).trigger('resize');
+			var obUrl = ''
+			//document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+			$("#clipArea").photoClip({
+				width: lWidth,
+				height: lHeight,
+				file: "#file",
+				view: "#view",
+				ok: "#clipBtn",
+				loadStart: function() {
+					return;
+					console.log("照片读取中");
+				},
+				loadComplete: function() {
+					return;
+					console.log("照片读取完成");
+				},
+				clipFinish: function(dataURL) {
+					//console.log(dataURL);
+					var imgURL=dataURL.replace(/^data:image\/(png|jpg|gif);base64,/,'');
+					//console.log(imgURL);
+					/*$.ajax({
+						type:'POST',
+					   // url:'/base64/test.php',
+						dataType:'json',
+						data:{base64:imgURL},
+						success:function(msg){
+
+						}
+					});*/
+				}
+			});
+		</script>
+		<script>
+			$(function(){
+				$("#logox").click(function(){
+					$(".htmleaf-container").show();
+					//alert($('#file').val());
+				})
+				$("#clipBtn").click(function(){
+					$("#logox").empty();
+					$('#logox').append('<img src="' + imgsource + '" align="absmiddle" style=" width: '+lWidth+'px;height: '+lHeight+'px;border-radius: 50%;">');
+					$(".htmleaf-container").hide();
+					
+				})
+				
+			});
+		</script>
+	 </body>
+</html>
