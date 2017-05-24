@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery精美相册展示</title>
+		<style type="text/css">
+			*{margin:0; padding:0;}
+			body{ background-size: cover; background-color: #3E3E3E; }
+			a{text-decoration:none; color:#000; }
+			.ban{width:700px; height:420px; margin:12% auto; -display: none;}
+			.ban span{width:224px; height:164px; float:left; margin:0 5px 5px 0;}
+			.ban span img{width:220px; height:160px; border-radius:5px;}
+			.dis{width:100%; height:100%; position: absolute; top:0; left:0;  background:rgba(0,0,0,0.8); display: none;}
+			.mark{width:100%; height:100%; display: block; position: absolute; top:0; left:0;}
+			.showImg{position: relative; top:30%; left:35%; width:30%; height:40%; z-index: 100;}
+			.showImg img{position: absolute; top:0; left:0; width:100%; height:100%; border:2px solid #fff; border-radius:15px;}
+			.back{font-size:40px; text-align:center; line-height:100px; width:50px; height:100px; background:#fff; border-radius: 15px; position: absolute; left:10%; top:45%; z-index: 100;}
+			.next{font-size:40px; text-align:center; line-height:100px; width:50px; height:100px; background:#fff; border-radius: 15px; position: absolute; right:10%; top:45%; z-index: 100;}
+		</style>
+		<script src="jquery-1.11.3.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				
+				$('#ban > span').click(function(){
+					$('#dis').fadeIn(100);
+					var $index = $(this).index();
+					var $l = $('#dis  img').size();
+					for(var i=0; i<$l; i++){
+						var $src = 'show/'+$index+'/'+(i+1)+'.jpg';
+						$('#dis  img').eq(i).attr('src',$src);
+					}
+				})
+				//点击上一个
+				$('#back').click(function(){
+					var $width = $('#dis img').eq(0).width();
+					
+					$('#dis img').filter(':last').stop().animate({'left':'-'+$width},500,function(){
+						$(this).prependTo($('.showImg'));
+						$(this).stop().animate({'left':'0'},500)
+					})
+					//div跟着动
+					$('.showImg').stop().animate({'left':'38%'},500,function(){
+						$('.showImg').stop().animate({'left':'35%'},500);
+					});
+				})
+				//点击下一个
+				$('#next').click(function(){
+					var $width = $('#dis img').eq(0).width();
+					$('#dis img').filter(':first').stop().animate({'left':$width},500,function(){
+						$(this).appendTo($('.showImg'));
+						$(this).stop().animate({'left':'0'});
+					})
+					//div跟着动
+					$('.showImg').stop().animate({'left':'32%'},500,function(){
+						$('.showImg').stop().animate({'left':'35%'},500);
+					});
+				})
+				//点击空白dis消失
+				$('.mark').click(function(){
+					$('#dis').fadeOut(100);
+				})
+				
+			})
+		</script>
+	</head>
+	<body>
+		
+			<div class="ban" id="ban">
+				<span><img src="main/1.jpg" /></span>
+				<span><img src="main/2.jpg" /></span>
+				<span><img src="main/3.jpg" /></span>
+			</div>
+			<div class="dis" id="dis">
+				<div class="showImg">
+					<img src="show/0/1.jpg" />
+					<img src="show/0/2.jpg" />
+					<img src="show/0/3.jpg" />
+					<img src="show/0/4.jpg" />
+					<img src="show/0/5.jpg" />
+				</div>
+				<a href="###" class="back" id="back"><</a>
+				<a href="###" class="next" id="next">></a>
+				<span class="mark"></span>
+			</div>
+			
+		
+	</body>
+</html>
